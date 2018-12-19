@@ -1,5 +1,5 @@
 ﻿using ClientManager.Data.Entities;
-using Data.Contexts;
+using ClientManager.Data.Contexts;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,13 +14,13 @@ namespace ClientManager.Data.Repositories
             _context = context;
         }
 
-        public void Create(Client client)
+        public void Create(ClientEntity client)
         {
             _context.Clients.Add(client);
             _context.SaveChanges();
         }
 
-        public void Update(Client client)
+        public void Update(ClientEntity client)
         {
             _context.Clients.Update(client);
             _context.SaveChanges();
@@ -29,7 +29,7 @@ namespace ClientManager.Data.Repositories
         public void DeleteById(int id)
         {
             //_context.Clients.Remove(_context.Clients.Find(id));
-            var client = new Client() {Id = id};
+            var client = new ClientEntity() {Id = id};
 
             _context.Attach(client);
             _context.Remove(client);
@@ -37,12 +37,12 @@ namespace ClientManager.Data.Repositories
 
         }
 
-        public ICollection<Client> GetClients()
+        public ICollection<ClientEntity> GetClients()
         {
             return _context.Clients.ToList();
         }
 
-        public Client GetClientById(int id)
+        public ClientEntity GetClientById(int id)
         {
             return _context.Clients.Find(id);
         }

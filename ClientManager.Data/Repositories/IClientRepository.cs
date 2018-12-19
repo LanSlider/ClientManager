@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using ClientManager.Data.Entities;
 using System.Collections.Generic;
 
 namespace ClientManager.Data.Repositories

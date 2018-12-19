@@ -3,7 +3,7 @@ using ClientManager.Data.Constants;
 
 namespace ClientManager.Data.Entities
 {
-    public class Client : BaseEntity
+    public class ClientEntity : BaseEntity
     {
         public string Name { get; set; }
         public decimal AvailableMoney { get; set; }

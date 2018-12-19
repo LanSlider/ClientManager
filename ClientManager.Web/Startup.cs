@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using ClientManager.Data.Contexts;
 
 namespace ClientManager.Web
 {
@@ -27,11 +30,8 @@ namespace ClientManager.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-           
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            var connection = @"Server=localhost\SQLEXPRESS;Database=clientdb;Trusted_Connection=True;"; 
+            var connection = @"Server=localhost\SQLEXPRESS;Database=clientdb;Trusted_Connection=True;";
             services.AddDbContext<ClientDbContext>
                 (options => options.UseSqlServer(connection));
 
@@ -46,11 +46,14 @@ namespace ClientManager.Web
             //ContainerConfig.RegisterTypes(builder);
 
             //DIModule.Load(builder);
-            Data.DIModule.Load(builder);
-            Domain.DIModule.Load(builder);
+            ClientManager.Data.DIModule.Load(builder);
+            ClientManager.Domain.DIModule.Load(builder);
 
             var container = builder.Build();
             return new AutofacServiceProvider(container);
+
+            services.AddAutoMapper();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

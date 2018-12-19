@@ -6,16 +6,9 @@ namespace ClientManager.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IClientService _clientService;
-
-        public HomeController(IClientService clientService)
-        {
-            _clientService = clientService;
-        }
-
         public IActionResult Index()
         {
-            return View(_clientService.GetClients());
+            return View();
         }
 
         public IActionResult About()

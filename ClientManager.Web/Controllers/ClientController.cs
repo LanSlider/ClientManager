@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ClientManager.Domain.Services;
+using ClientManager.Web.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ClientManager.Web.Controllers
 {
@@ -31,7 +33,7 @@ namespace ClientManager.Web.Controllers
         }
 
         [HttpPost("Client/Edit/{id}")]
-        public IActionResult Edit(Client client)
+        public IActionResult Edit(ClientViewModel client)
         {
             _clientService.Update(client);
 
@@ -47,7 +49,7 @@ namespace ClientManager.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Client client)
+        public IActionResult Create(ClientViewModel client)
         {
             _clientService.Create(client);
 
