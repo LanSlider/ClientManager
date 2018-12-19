@@ -35,7 +35,7 @@ namespace ClientManager.Web.Controllers
         [HttpPost("Client/Edit/{id}")]
         public IActionResult Edit(ClientViewModel client)
         {
-            _clientService.Update(client);
+            //_clientService.Update(client);
 
             return RedirectToAction("Index", "Client");
         }
@@ -51,7 +51,7 @@ namespace ClientManager.Web.Controllers
         [HttpPost]
         public IActionResult Create(ClientViewModel client)
         {
-            _clientService.Create(client);
+            //_clientService.Create(client);
 
             return RedirectToAction("Index", "Client");
         }

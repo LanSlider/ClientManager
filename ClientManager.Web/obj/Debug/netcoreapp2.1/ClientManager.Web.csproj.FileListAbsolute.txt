@@ -65,3 +65,5 @@ D:\EducationProject\ClientManager\ClientManager.Web\obj\Debug\netcoreapp2.1\Clie
 D:\EducationProject\ClientManager\ClientManager.Web\obj\Debug\netcoreapp2.1\ClientManager.Web.dll
 D:\EducationProject\ClientManager\ClientManager.Web\obj\Debug\netcoreapp2.1\ClientManager.Web.pdb
 D:\EducationProject\ClientManager\ClientManager.Web\obj\Debug\netcoreapp2.1\ClientManager.Web.csproj.CopyComplete
+D:\EducationProject\ClientManager\ClientManager.Web\bin\Debug\netcoreapp2.1\ClientManager.Data.dll
+D:\EducationProject\ClientManager\ClientManager.Web\bin\Debug\netcoreapp2.1\ClientManager.Domain.dll
