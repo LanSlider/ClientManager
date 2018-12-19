@@ -1,4 +1,9 @@
-﻿using ClientManager.Domain.Services;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using AutoMapper;
+using ClientManager.Domain.Models;
+using ClientManager.Domain.Services;
 using ClientManager.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,16 +11,20 @@ namespace ClientManager.Web.Controllers
 {
     public class ClientController : Controller
     {
-        private readonly IClientService _clientService;
+        private readonly IMapper _mapper;
+        private readonly IClientService _clientService;      
 
-        public ClientController(IClientService clientService)
+        public ClientController(IClientService clientService, IMapper mapper)
         {
+            _mapper = mapper;
             _clientService = clientService;
         }
 
         public IActionResult Index()
         {
-            return View(_clientService.GetClients());
+            var clientList = _clientService.GetClients();
+
+            return View(_mapper.Map<ICollection<ClientViewModel>>(clientList));
         }
 
         [HttpGet]
@@ -29,13 +38,14 @@ namespace ClientManager.Web.Controllers
         {
             var client = _clientService.GetClientById(id);
 
-            return View(client);
+            return View(_mapper.Map<ClientViewModel>(client));
         }
 
         [HttpPost("Client/Edit/{id}")]
         public IActionResult Edit(ClientViewModel client)
         {
-            //_clientService.Update(client);
+            var clientModel = _mapper.Map<ClientModel>(client);
+            _clientService.Update(clientModel);
 
             return RedirectToAction("Index", "Client");
         }
@@ -51,7 +61,8 @@ namespace ClientManager.Web.Controllers
         [HttpPost]
         public IActionResult Create(ClientViewModel client)
         {
-            //_clientService.Create(client);
+            var clientModel = _mapper.Map<ClientModel>(client);
+            _clientService.Create(clientModel);
 
             return RedirectToAction("Index", "Client");
         }

@@ -2,6 +2,7 @@
 using ClientManager.Data.Contexts;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClientManager.Data.Repositories
 {
@@ -22,17 +23,23 @@ namespace ClientManager.Data.Repositories
 
         public void Update(ClientEntity client)
         {
-            _context.Users.Update(client);
+            var existing = GetClientById(client.Id);
+            if (existing != null)
+            {
+                _context.Entry(existing).CurrentValues.SetValues(client);
+            }
+
             _context.SaveChanges();
         }
 
         public void DeleteById(int id)
         {
-            //_context.Clients.Remove(_context.Clients.Find(id));
-            var client = new ClientEntity() {Id = id};
+            //var client = new ClientEntity() {Id = id};
 
-            _context.Attach(client);
-            _context.Remove(client);
+            //_context.Attach(client);
+            //_context.Remove(client);
+
+            _context.Users.Remove(_context.Users.Find(id));           
             _context.SaveChanges();
 
         }

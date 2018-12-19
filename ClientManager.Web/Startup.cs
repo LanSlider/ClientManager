@@ -10,6 +10,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
 using ClientManager.Data.Contexts;
+using ClientManager.Domain.Mapping;
 
 namespace ClientManager.Web
 {
@@ -32,7 +33,12 @@ namespace ClientManager.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddAutoMapper();
+            services.AddAutoMapper(cfg =>
+            {
+                cfg.AddProfile(new MapperProfile());
+                cfg.AddProfile(new Mapping.MapperProfile());
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<ClientDbContext>

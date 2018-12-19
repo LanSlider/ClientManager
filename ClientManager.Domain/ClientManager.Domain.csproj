@@ -4,4 +4,17 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ClientManager.Data\ClientManager.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>C:\Users\arepetuho\.nuget\packages\autofac\4.8.1\lib\netstandard1.1\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>C:\Users\arepetuho\.nuget\packages\automapper\8.0.0\lib\netstandard2.0\AutoMapper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

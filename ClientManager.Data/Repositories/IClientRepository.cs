@@ -5,10 +5,10 @@ namespace ClientManager.Data.Repositories
 {
     public interface IClientRepository
     {
-        void Create(Client client);
-        void Update(Client client);
+        void Create(ClientEntity client);
+        void Update(ClientEntity client);
         void DeleteById(int id);
-        ICollection<Client> GetClients();
-        Client GetClientById(int id);
+        ICollection<ClientEntity> GetClients();
+        ClientEntity GetClientById(int id);
     }
 }

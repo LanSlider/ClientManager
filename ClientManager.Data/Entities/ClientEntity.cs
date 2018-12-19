@@ -1,15 +1,11 @@
 ﻿using ClientManager.Data.Constants;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace ClientManager.Data.Entities
 {
-    public class ClientEntity : IdentityUser
+    public class ClientEntity : IdentityUser<int>
     {
-        [Key]
-        public new int Id { get; set; }
         public decimal AvailableMoney { get; set; }
         public GenderType? Gender { get; set; }
 
@@ -28,5 +24,13 @@ namespace ClientManager.Data.Entities
 
             return false;
         }
+    }
+
+    public class RoleEntity : IdentityRole<int>
+    {
+        public RoleEntity()
+        { }
+
+        public RoleEntity(string name) { Name = name; }
     }
 }
