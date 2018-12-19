@@ -3,15 +3,15 @@
     ViewData["Title"] = "Create";
 }
 
-@using Data.Constants
-@model Data.Entities.Client
+@using ClientManager.Data.Constants
+@model ClientManager.Web.Models.ClientViewModel
 
 <h2>Create Client</h2>
 
 <div style="padding: 40px">
     <form method="post" action="~/Client/Create">
         <div style="padding: 5px">
-            @Html.EditorFor(x => x.Name, new { htmlAttributes = new { placeholder = "Input name"}} )
+            @Html.EditorFor(x => x.UserName, new { htmlAttributes = new { placeholder = "Input name"}} )
         </div>
         <div style="padding: 5px">
             @Html.EditorFor(x => x.AvailableMoney, new { htmlAttributes = new { placeholder = "Input money" }})

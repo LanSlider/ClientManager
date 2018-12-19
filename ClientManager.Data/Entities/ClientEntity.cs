@@ -1,11 +1,15 @@
-﻿using System;
-using ClientManager.Data.Constants;
+﻿using ClientManager.Data.Constants;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ClientManager.Data.Entities
 {
-    public class ClientEntity : BaseEntity
+    public class ClientEntity : IdentityUser
     {
-        public string Name { get; set; }
+        [Key]
+        public new int Id { get; set; }
         public decimal AvailableMoney { get; set; }
         public GenderType? Gender { get; set; }
 

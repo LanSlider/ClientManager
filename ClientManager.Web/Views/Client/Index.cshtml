@@ -2,7 +2,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-@model ICollection<Data.Entities.Client>
+@model ICollection<ClientManager.Web.Models.ClientViewModel>
 
     <div style="padding: 20px">
         <a href="/Client/Create"><button>Add client</button></a>
@@ -18,7 +18,7 @@
             @foreach (var client in Model)
             {
             <tr>
-                <td>@client.Name</td>
+                <td>@client.UserName</td>
                 <td>@client.AvailableMoney</td>
                 <td>@client.Gender</td>
                 <td><a href="~/Client/Edit/@client.Id">Edit</a></td>

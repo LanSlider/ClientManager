@@ -16,13 +16,13 @@ namespace ClientManager.Data.Repositories
 
         public void Create(ClientEntity client)
         {
-            _context.Clients.Add(client);
+            _context.Users.Add(client);
             _context.SaveChanges();
         }
 
         public void Update(ClientEntity client)
         {
-            _context.Clients.Update(client);
+            _context.Users.Update(client);
             _context.SaveChanges();
         }
 
@@ -39,12 +39,12 @@ namespace ClientManager.Data.Repositories
 
         public ICollection<ClientEntity> GetClients()
         {
-            return _context.Clients.ToList();
+            return _context.Users.ToList();
         }
 
         public ClientEntity GetClientById(int id)
         {
-            return _context.Clients.Find(id);
+            return _context.Users.Find(id);
         }
     }
 }
