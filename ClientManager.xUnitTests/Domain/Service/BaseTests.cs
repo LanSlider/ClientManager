@@ -1,24 +1,26 @@
-﻿using System;
-using Autofac;
-using ClientManager.Data.Repositories;
+﻿using Autofac;
 using ClientManager.Domain;
-using Moq;
 
 namespace ClientManager.xUnitTests.Domain.Service
 {
     public abstract class BaseTests
     {
-        protected IContainer Container { get; private set; }
+        private IContainer _container;
+        protected IContainer Container {
+            get
+            {
+                if (_container == null)
+                {
+                    var builder = new ContainerBuilder();
+                    DIModule.Load(builder);
+                    RegisterInstancesInBuilder(builder);
+                    _container = builder.Build();
+                }
 
-        protected BaseTests()
-        { 
-            var builder = new ContainerBuilder();
-            DIModule.Load(builder);
-            RegisterInstancesInBuilder(builder);
-
-            Container = builder.Build();
+                return _container;
+            }
         }
-
+      
         protected virtual void RegisterInstancesInBuilder(ContainerBuilder builder)
         {
 
