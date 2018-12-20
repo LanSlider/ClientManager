@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using AutoMapper;
-using ClientManager.Domain.Models;
+﻿using AutoMapper;
+using ClientManager.Data.Entities;
 using ClientManager.Domain.Services;
 using ClientManager.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace ClientManager.Web.Controllers
 {
@@ -44,7 +42,7 @@ namespace ClientManager.Web.Controllers
         [HttpPost("Client/Edit/{id}")]
         public IActionResult Edit(ClientViewModel client)
         {
-            var clientModel = _mapper.Map<ClientModel>(client);
+            var clientModel = _mapper.Map<ClientEntity>(client);
             _clientService.Update(clientModel);
 
             return RedirectToAction("Index", "Client");
@@ -61,7 +59,7 @@ namespace ClientManager.Web.Controllers
         [HttpPost]
         public IActionResult Create(ClientViewModel client)
         {
-            var clientModel = _mapper.Map<ClientModel>(client);
+            var clientModel = _mapper.Map<ClientEntity>(client);
             _clientService.Create(clientModel);
 
             return RedirectToAction("Index", "Client");

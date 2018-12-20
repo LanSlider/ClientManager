@@ -1,32 +1,27 @@
 ﻿using AutoMapper;
 using ClientManager.Data.Entities;
 using ClientManager.Data.Repositories;
-using ClientManager.Domain.Models;
 using System.Collections.Generic;
 
 namespace ClientManager.Domain.Services
 {
     internal class ClientService : IClientService
     {
-        private readonly IMapper _mapper;
         private readonly IClientRepository _clientRepository;
 
-        public ClientService(IClientRepository clientRepository, IMapper mapper)
+        public ClientService(IClientRepository clientRepository)
         {
-            _mapper = mapper;
             _clientRepository = clientRepository;
         }
 
-        public void Create(ClientModel client)
+        public void Create(ClientEntity client)
         {
-            var clientModel = _mapper.Map<ClientEntity>(client);
-            _clientRepository.Create(clientModel);
+            _clientRepository.Create(client);
         }
 
-        public void Update(ClientModel client)
+        public void Update(ClientEntity client)
         {
-            var clientEntity = _mapper.Map<ClientEntity>(client);
-            _clientRepository.Update(clientEntity);
+            _clientRepository.Update(client);
         }
 
         public void DeleteById(int id)
@@ -34,18 +29,14 @@ namespace ClientManager.Domain.Services
             _clientRepository.DeleteById(id);            
         }
 
-        public ICollection<ClientModel> GetClients()
-        {
-            var clientList = _clientRepository.GetClients();
-
-            return _mapper.Map<ICollection<ClientModel>>(clientList);
+        public ICollection<ClientEntity> GetClients()
+        {          
+            return _clientRepository.GetClients(); 
         }
 
-        public ClientModel GetClientById(int id)
+        public ClientEntity GetClientById(int id)
         {
-            var clientEntity = _clientRepository.GetClientById(id);
-
-            return _mapper.Map<ClientModel>(clientEntity);
+            return _clientRepository.GetClientById(id);
         }
     }
 }

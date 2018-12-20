@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
-using ClientManager.Domain.Models;
+using ClientManager.Data.Entities;
 
 namespace ClientManager.Domain.Services
 {
     public interface IClientService
     {
-        void Create(ClientModel client);
-        void Update(ClientModel client);
+        void Create(ClientEntity client);
+        void Update(ClientEntity client);
         void DeleteById(int id);
-        ICollection<ClientModel> GetClients();
-        ClientModel GetClientById(int id);
+        ICollection<ClientEntity> GetClients();
+        ClientEntity GetClientById(int id);
     }
 }

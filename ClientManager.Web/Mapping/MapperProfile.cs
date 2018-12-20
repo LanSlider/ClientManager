@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ClientManager.Domain.Models;
+using ClientManager.Data.Entities;
 using ClientManager.Web.Models;
 
 namespace ClientManager.Web.Mapping
@@ -8,8 +8,8 @@ namespace ClientManager.Web.Mapping
     {
         public MapperProfile()
         {
-            CreateMap<ClientModel, ClientViewModel>();
-            CreateMap<ClientViewModel, ClientModel>();
+            CreateMap<ClientEntity, ClientViewModel>();
+            CreateMap<ClientViewModel, ClientEntity>();
         }
     }
 }
